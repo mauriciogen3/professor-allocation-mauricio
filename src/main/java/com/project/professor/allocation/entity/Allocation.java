@@ -10,28 +10,33 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-
-
-@Entity
+@Entity // representa uma classe
 public class Allocation {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // da o poder de um auto incrementada
+	private Long id;
 	
-	
-	@Enumerated(value = EnumType.STRING)
-	@Column(nullable = false, unique = false)
+	@Enumerated(value = EnumType.STRING) // como armazenar uma informacao no banco de dados valor armazenado ( textou ou numero) String para informar que é texto
+	@Column(nullable = false, unique = false) // configura a mais sua coluna
 	private DayOfWeek dayOfWeek;
+	
+	@Temporal(value = TemporalType.TIME)
+	@Column(nullable = false, unique = false)
 	private Date start;
+	
+	@Temporal(value = TemporalType.TIME)
+	@Column(nullable = false, unique = false)	
 	private Date end;
 	
 	public Allocation() {
 		super();
 	}
 
-	public Allocation(long id, DayOfWeek dayOfWeek, Date start, Date end) {
+	public Allocation(Long id, DayOfWeek dayOfWeek, Date start, Date end) {
 		super();
 		this.id = id;
 		this.dayOfWeek = dayOfWeek;
@@ -39,7 +44,7 @@ public class Allocation {
 		this.end = end;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
