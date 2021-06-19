@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Departamento {
+public class Department {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long id;
@@ -21,11 +21,11 @@ public class Departamento {
 		@OneToMany(mappedBy = "department")
 		private List<Professor> professor;
 		
-		public Departamento() {
+		public Department() {
 			super();
 		}
 		
-		public Departamento (Long id, String name, List<Professor> professor) {
+		public Department (Long id, String name, List<Professor> professor) {
 			super();
 			this.id = id;
 			this.name = name;

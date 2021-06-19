@@ -7,18 +7,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Curso {
+public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false, unique = false)
 	private Long id;
 	private String name;
 
-	public Curso() {
+	public Course() {
 		super();
 	}
 
-	public Curso(Long id, String name) {
+	public Course(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;

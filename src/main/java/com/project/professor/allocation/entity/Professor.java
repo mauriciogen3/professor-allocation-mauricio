@@ -23,13 +23,13 @@ private String name;
 @OnDelete(action = OnDeleteAction.CASCADE)
 
 @ManyToOne(optional = false)// nesse caso temos vários professores para um departamento
-private Departamento department;
+private Department department;
 
 
 public Professor() {
 	super();
 }
-public Professor(Long id, String cpf, String name, Departamento department) {
+public Professor(Long id, String cpf, String name, Department department) {
 	super();
 	this.id = id;
 	this.cpf = cpf;
@@ -54,10 +54,10 @@ public String getName() {
 public void setName(String name) {
 	this.name = name;
 }
-public Departamento getDepartment() {
+public Department getDepartment() {
 	return department;
 }
-public void setDepartment(Departamento department) {
+public void setDepartment(Department department) {
 	this.department = department;
 }
 
