@@ -14,6 +14,8 @@ public class Course {
 	private Long id;
 	private String name;
 
+	// Falta o relacionamento com alocação. Lembrar que o mapeamento é bidirecional
+	
 	public Course() {
 		super();
 	}

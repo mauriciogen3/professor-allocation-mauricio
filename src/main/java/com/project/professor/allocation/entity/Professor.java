@@ -10,6 +10,10 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+// Uma boa prática é sempre deixar a classe identada (Aperta Ctrl + Shift + f).
+// Replicar isso nas outras classes.
+// Falta o relacionamento com alocação. Lembrar que o mapeamento é bidirecional.
+
 @Entity
 public class Professor {
 	

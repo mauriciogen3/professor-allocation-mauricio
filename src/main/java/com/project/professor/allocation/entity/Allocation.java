@@ -32,10 +32,16 @@ public class Allocation {
 	private Date end;
 	
 	//copiado e colado manytoone
+	/*
+	Falta o get, o set e adicionar no construtor
+	*/
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "professor_id", nullable = false)
 	private Professor professor;
 
+	/*
+	Falta o get, o set e adicionar no construtor
+	*/
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "course_id", nullable = false)
 	private Course course;
