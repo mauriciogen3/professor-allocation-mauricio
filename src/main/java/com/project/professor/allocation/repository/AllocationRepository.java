@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.professor.allocation.entity.Allocation;
 import com.project.professor.allocation.entity.Course;
+import com.project.professor.allocation.entity.Professor;
 
 @Repository
 public interface AllocationRepository extends JpaRepository<Allocation, Long>{
@@ -15,4 +16,8 @@ public interface AllocationRepository extends JpaRepository<Allocation, Long>{
 	// Quero buscar todas as alocacoes em q1ue o curso tenha id 1
 	List<Allocation> findByCourse (Course course);
 	List<Allocation> findByCourseId(Long id);
+	List<Allocation> findByProfessor (Professor professor);
+	List<Allocation> findByProfessorId(Long id);
+	
+
 }
