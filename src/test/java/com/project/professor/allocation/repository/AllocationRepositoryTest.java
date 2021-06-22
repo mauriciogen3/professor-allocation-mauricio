@@ -1,7 +1,6 @@
 package com.project.professor.allocation.repository;
 
 import java.time.DayOfWeek;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
