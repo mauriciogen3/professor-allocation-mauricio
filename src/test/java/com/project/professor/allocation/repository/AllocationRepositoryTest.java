@@ -1,6 +1,8 @@
 package com.project.professor.allocation.repository;
 
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +43,11 @@ public class AllocationRepositoryTest {
 		Allocation allocation = new Allocation();
 		allocation.setId(1L);
 		allocation.setDayOfWeek(DayOfWeek.MONDAY);
-		allocation.setStart(null); 
+		// Isso da errado pq na definição que vc colocou foi nullable = false
+		// Usa SimpleDateFormat para criar as horas:
+		//SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		//Date setStart = sdf.parse("20:00");
+		allocation.setStart(null);
 		allocation.setEnd(null); 
 		
 		allocationRepository.save(allocation);

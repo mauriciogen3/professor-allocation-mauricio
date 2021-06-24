@@ -14,8 +14,12 @@ public interface AllocationRepository extends JpaRepository<Allocation, Long>{
 
 	//List <Allocation> findByLastnameAndFirstname(String lastname, String firstname)
 	// Quero buscar todas as alocacoes em q1ue o curso tenha id 1
+	
+	// São equivalentes. No primeiro é obrigatório setar o ID do curso 
 	List<Allocation> findByCourse (Course course);
 	List<Allocation> findByCourseId(Long id);
+	
+	// São equivalentes. No primeiro é obrigatório setar o ID do professor
 	List<Allocation> findByProfessor (Professor professor);
 	List<Allocation> findByProfessorId(Long id);
 	

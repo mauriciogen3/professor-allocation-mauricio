@@ -8,4 +8,6 @@ import com.project.professor.allocation.entity.Professor;
 @Repository
 public interface ProfessorRepository extends JpaRepository <Professor, Long> {
 
+	// Falta o find by name containing
+	// Não está no exercicio, mas coloca o find by department id
 }

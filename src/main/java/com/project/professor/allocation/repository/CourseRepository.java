@@ -8,4 +8,5 @@ import com.project.professor.allocation.entity.Course;
 @Repository
 public interface CourseRepository extends JpaRepository <Course, Long> {
 
+	// Falta o find by name containing
 }
