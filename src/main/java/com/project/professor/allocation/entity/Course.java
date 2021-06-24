@@ -14,8 +14,17 @@ public class Course {
 	private Long id;
 	private String name;
 
-	// Falta o relacionamento com alocação. Lembrar que o mapeamento é bidirecional
+
+	private Allocation allocation;
 	
+	public Allocation getAllocation() {
+		return allocation;
+	}
+
+	public void setAllocation(Allocation allocation) {
+		this.allocation = allocation;
+	}
+
 	public Course() {
 		super();
 	}
