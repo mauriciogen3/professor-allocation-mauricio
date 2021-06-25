@@ -20,106 +20,95 @@ import com.project.professor.allocation.entity.Course;
 import com.project.professor.allocation.entity.Professor;
 
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = Replace.NONE) 
+@AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
 @TestPropertySource(locations = "classpath:application.properties")
-
 public class AllocationRepositoryTest {
 	
+	SimpleDateFormat sdf = new  SimpleDateFormat ("HH:mm");
+
 	@Autowired
 	private AllocationRepository allocationRepository;
-	
-	
+	@Autowired
+	private ProfessorRepository professorRepository;
+	@Autowired
+	private CourseRepository courseRepository;
 
-	// Create
-	//<S extends T> S save(S entity);
 	@Test
-	void testCreate () throws ParseException {
+	void testCreate() throws ParseException {
+
+		Professor professor = professorRepository.getById(4L);
 		
-		Course course = new Course();
-		course.setId(1L);
-		Professor professor = new Professor();
-		professor.setId(1L);		
+		Course course = courseRepository.getById(1L);
 		
-		Allocation allocation = new Allocation();
-		allocation.setId(1L);
+		Allocation allocation = new Allocation();		
 		allocation.setDayOfWeek(DayOfWeek.MONDAY);
-		// Isso da errado pq na definição que vc colocou foi nullable = false
-		// Usa SimpleDateFormat para criar as horas:
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		Date setStart = sdf.parse("20:00"); // ao criar apresentou erro e pediu para 
-		//criar throws ParseException
-		allocation.setStart(null);
-		allocation.setEnd(null); 
+		allocation.setStart(sdf.parse("11:20"));
+		allocation.setEnd(sdf.parse("12:00"));
+		allocation.setProfessor(professor);
+		allocation.setCourse (course);
 		
-		allocationRepository.save(allocation);
+		//AÇÃO
+		allocation = allocationRepository.save(allocation);
 		System.out.println(allocation);
-	
-		}
-	
-		@Test
-		void test1() {
-					//FindAll Red (CRUD)
-			
-			List<Allocation> allocations = allocationRepository.findAll();
-			System.out.println(allocations);
-			
-		}
 		
-	//Read
-	@Test
-	void test2() {
-				//Find byID (CRUD)
-		Long id = 1L;	
-		
-		Optional<Allocation> optional= allocationRepository.findById(id);
-		
-		Allocation allocation = optional.orElse(null);
-
-}
-	
-	
-	//• Update
-	//<S extends T> S save(S entity);
-	
-	@Test
-	void save_update() {
-		
-	Course course = new Course();
-	course.setId(1L);
-	Professor professor = new Professor();
-	professor.setId(1L);
-	
-	Allocation allocation = new Allocation();
-	allocation.setId(1L);
-	allocation.setDayOfWeek(DayOfWeek.MONDAY);
-	allocation.setStart(null);
-	allocation.setEnd(null);
-	
-		// Act
-			allocation = allocationRepository.save(allocation);
-				
-	// Print
-				System.out.println("Novo professor: " + allocation);
+		//print
+		System.out.println(allocation);
 	}
-	
-	
-	//• Delete
-	//void deleteById(ID id);
+
+	// Read
+	@Test
+	void testRead() {
+		// Find byID (CRUD)
+		Long id = 1L;
+
+		//Act
+		List<Allocation> allocation = allocationRepository.findAll();
+		Optional<Allocation> allocationId = allocationRepository.findById(id);
+		
+		//print
+		System.out.println("-------------");
+		System.out.println(allocationId.orElse(null));
+		System.out.println("-------------");
+		System.out.println(allocation);
+
+	}
+
+	// • Update
+	// <S extends T> S save(S entity);
+
+	@Test
+	void testUpdate() throws ParseException {
+		//Em setEnd e setStart apresentou um erro pedindo para acrescentar throws parseException
+		// FindAll Red (CRUD)
+		Professor professor = professorRepository.getById(5L);
+		Course course = courseRepository.getById(1L);
+		
+		Allocation allocation = allocationRepository.getById(1L);
+		allocation.setDayOfWeek(DayOfWeek.THURSDAY);
+		allocation.setStart(sdf.parse("11:20"));
+		allocation.setEnd(sdf.parse("12:20"));
+		allocation.setProfessor(professor);
+		allocation.setCourse(course);
+		
+		// Act
+		allocation = allocationRepository.save(allocation);
+
+		// Print
+		System.out.println(allocation);
+	}
+
+
+
+	// • Delete
+	// void deleteById(ID id);
 	@Test
 	public void deleteById() {
-	// Arrange
-	Long id = 1L;
+		// Arrange
+		Long id = 1L;
 
-	// Act
-	allocationRepository.deleteById(id);
+		// Act
+		allocationRepository.deleteById(id);
 	}
-
-		
-		
-		
-	
-	
-	
 
 }

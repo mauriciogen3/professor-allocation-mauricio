@@ -77,13 +77,7 @@ public class CourseRepositoryTest {
 		// Act
 		courseRepository.deleteById(id);
 	
-	}
-	
-	@Test
-	public void testDeleteAll(){
-		
-		// Act
-		courseRepository.deleteAll();
+
 	
 	}
 }
