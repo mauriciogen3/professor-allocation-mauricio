@@ -1,5 +1,6 @@
 package com.project.professor.allocation.repository;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.Date;
@@ -33,7 +34,7 @@ public class AllocationRepositoryTest {
 	// Create
 	//<S extends T> S save(S entity);
 	@Test
-	void testCreate () {
+	void testCreate () throws ParseException {
 		
 		Course course = new Course();
 		course.setId(1L);
@@ -45,8 +46,9 @@ public class AllocationRepositoryTest {
 		allocation.setDayOfWeek(DayOfWeek.MONDAY);
 		// Isso da errado pq na definição que vc colocou foi nullable = false
 		// Usa SimpleDateFormat para criar as horas:
-		//SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		//Date setStart = sdf.parse("20:00");
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		Date setStart = sdf.parse("20:00"); // ao criar apresentou erro e pediu para 
+		//criar throws ParseException
 		allocation.setStart(null);
 		allocation.setEnd(null); 
 		
