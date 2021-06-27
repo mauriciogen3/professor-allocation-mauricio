@@ -1,11 +1,14 @@
 package com.project.professor.allocation.entity;
 
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -20,10 +23,13 @@ private String cpf;
 private String name;
 
 
-@OnDelete(action = OnDeleteAction.CASCADE)
-
 @ManyToOne(optional = false)// nesse caso temos vários professores para um departamento
 private Department department;
+
+@OnDelete(action = OnDeleteAction.CASCADE)
+@OneToMany(mappedBy = "professor")
+private List<Allocation> allocations;
+
 
 
 public Professor() {

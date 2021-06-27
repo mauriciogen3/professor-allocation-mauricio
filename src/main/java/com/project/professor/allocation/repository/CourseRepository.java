@@ -10,5 +10,5 @@ import java.util.List;
 public interface CourseRepository extends JpaRepository <Course, Long> {
 
 	// Falta o find by name containing
-	List<Course> findByNaneContainingIgnoreCase(String name);  
+	 List<Course> findByNameContainingIgnoreCase(String name);  
 }
