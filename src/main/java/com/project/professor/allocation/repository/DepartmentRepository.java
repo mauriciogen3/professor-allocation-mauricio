@@ -23,7 +23,7 @@ public interface DepartmentRepository extends JpaRepository <Department, Long> {
 	 * departamento de quimica
 	 */
 	
-	List<Department> findByNameContaining(String partName);
+	List<Department> findByNameContainingIgnoreCase(String name);
 	//professor. No seu modelo tinha findByNameContainingIgnoreCase().
 	//qual a diferença??
 

@@ -13,7 +13,7 @@ public interface ProfessorRepository extends JpaRepository<Professor, Long> {
 	// Falta o find by name containing
 	// Não está no exercicio, mas coloca o find by department id
 
-	List<Professor> finbByNameContainingId(Long id);
+	List<Professor> findByDepartmentId(Long id);
 
-	List<Professor> findByNameContaining(String name);
+	List<Professor> findByNameContainingIgnoreCase(String name);
 }
