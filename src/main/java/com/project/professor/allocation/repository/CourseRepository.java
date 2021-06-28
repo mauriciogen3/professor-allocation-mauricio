@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface CourseRepository extends JpaRepository <Course, Long> {
 
-	// Falta o find by name containing
+	//findByContainingIgnoreCase serve para que nao haja  diferenciação entre maiusculas de minusculas
 	 List<Course> findByNameContainingIgnoreCase(String name);  
 }

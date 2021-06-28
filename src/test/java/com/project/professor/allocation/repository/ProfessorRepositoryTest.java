@@ -33,9 +33,9 @@ public class ProfessorRepositoryTest {
 		department.setId(1L);
 
 		Professor professor = new Professor();
-		professor.setId(1L);
-		professor.setName("Maurício");
-		professor.setCpf("111.111.111-11");
+		professor.setId(null);
+		professor.setName("Maurício 3");
+		professor.setCpf("111.111.111-33");
 		professor.setDepartment(department);
 
 		// Act
