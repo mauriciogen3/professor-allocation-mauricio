@@ -48,6 +48,7 @@ public Professor create (Professor professor){
 professor.setId(null);
 Professor newProfessor = profRepository.save(professor);
 
+// Usar saveInternal
 Long departmentId = newProfessor.getDepartment().getId();
 Department newDepartment = departmentRepository.findById(departmentId).orElse(null);
 newProfessor.setDepartment(newDepartment);
@@ -98,6 +99,8 @@ public void delete(Long professorId) { // delete é void pois nao retorna nada.
 	//public void deleteAll() {
 	//	profRepository.deleteAllInBatch();	
 	//MESMO ERRO. O UNICO QUE NAO APRESENTOU ESSE ERRO FOI DEPARTMENTSERVICE
+	// Mais uma vez a mesma correção. Mais uma vez está faltando indentação nas classes. Esse
+	// problema seria evitado se as classes estivessem com indentação (Ctrl + Shift + F).
 		
 }
 }

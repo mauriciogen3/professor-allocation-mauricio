@@ -39,6 +39,7 @@ public class AllocationService {
 	// CREATE
 	public Allocation Create(Allocation allocation) {
 		allocation.setId(null);
+		// Onde está o allocRepository.save(allocation) [saveInternal]? 
 		return allocation;
 
 	}
@@ -47,6 +48,7 @@ public class AllocationService {
 	public Allocation update(Allocation allocation) {
 		boolean exists = allocRepository.existsById(allocation.getId());
 		if (exists) {
+			// Onde está o allocRepository.save(allocation) [saveInternal]?
 			return allocation;
 		} else {
 			return null;
@@ -70,6 +72,12 @@ public class AllocationService {
 	//		allocRepository.deleteAllInBatch();
 		
 		// O CÓDIGO DO DELETE ALL ESTÁ APRESENTANDO ERRO DE SINTAXE. MAS ONDE?
+		// O erro do deletAll é onde você colocou o método. Ele está dentro do método deleteById conforme fiz abaixo
 		}
-		}
+
+	//DELETE ALL
+	public void deleteAll() {
+		allocRepository.deleteAllInBatch();
+	}
+}
 

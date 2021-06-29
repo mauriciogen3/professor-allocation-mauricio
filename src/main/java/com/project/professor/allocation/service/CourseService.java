@@ -35,6 +35,7 @@ public class CourseService {
 	// CREATE
 	public Course Create(Course course) {
 		course.setId(null);
+		// Onde está o courseRepository.save(course) [saveInternal]?
 		return course;
 
 	}
@@ -42,6 +43,7 @@ public class CourseService {
 	public Course update(Course course) {
 		boolean exists = courseRepository.existsById(course.getId());
 		if (exists) {
+			// Onde está o courseRepository.save(course) [saveInternal]?
 			return course;
 		} else {
 			return null;
@@ -63,6 +65,7 @@ public class CourseService {
 	   // public void deleteAll() {
 	      //  courseRepository.deleteAllInBatch();
 		// O MESMO PROBLEMA EM ALLOCATION
+		// Mesma correção de alocação
 		
 	}
 
