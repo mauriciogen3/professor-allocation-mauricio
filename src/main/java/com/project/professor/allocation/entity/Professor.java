@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Professor {
 	
@@ -22,14 +24,13 @@ private Long id;
 private String cpf;
 private String name;
 
-
+@JsonIgnoreProperties({"professor"})
 @ManyToOne(optional = false)// nesse caso temos vários professores para um departamento
 private Department department;
 
 @OnDelete(action = OnDeleteAction.CASCADE)
 @OneToMany(mappedBy = "professor")
 private List<Allocation> allocations;
-
 
 
 public Professor() {
